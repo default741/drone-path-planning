@@ -80,9 +80,9 @@ While the system works efficiently, the particle filter occasionally struggles t
    pip install -r requirements.txt
    ```
 4. Run the Code:
-   - Open the drone_path_planning.py file.
-   - For a single simulation, uncomment the main() function. This will visually show how the drone finds its path.
-   - To run multiple simulations, set the NUM_SIMULATIONS variable to the desired number and uncomment the run_simulation() function.
+   - Open the ```drone_path_planning.py``` file.
+   - For a single simulation, uncomment the ```main()``` function. This will visually show how the drone finds its path.
+   - To run multiple simulations, set the ```NUM_SIMULATIONS``` variable to the desired number and uncomment the ```run_simulation()``` function.
    - Execute the code by running:
         ```python
         python drone_path_planning.py
