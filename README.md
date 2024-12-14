@@ -1,5 +1,7 @@
 # Drone Path Planning with Dynamic Obstacles
 
+___Disclaimer - The whole code is written by us from scratch. We have only used the libraries like NumPy's and Matplotlib's documentation as a references for function's use cases. We did use ChatGPT for conceptual understanding of Particle Filters as we were stuck why is it not detecting obstacles.___
+
 ## Overview
 
 The goal of this project is to create a navigation system for drones that allows them to travel safely and efficiently from their starting point to their destination, even in environments that are constantly changing. This involves designing an intelligent algorithm that enables the drone to autonomously find its path while avoiding obstacles that might move or appear suddenly.
@@ -79,7 +81,7 @@ While the system works efficiently, the particle filter occasionally struggles t
    ```bash
    pip install -r requirements.txt
    ```
-4. Run the Code:
+4. **Run the Code**:
    - Open the ```drone_path_planning.py``` file.
    - For a single simulation, uncomment the ```main()``` function. This will visually show how the drone finds its path.
    - To run multiple simulations, set the ```NUM_SIMULATIONS``` variable to the desired number and uncomment the ```run_simulation()``` function.
@@ -93,3 +95,12 @@ While the system works efficiently, the particle filter occasionally struggles t
 ## Conclusion
 
 This project demonstrates a practical solution for drone navigation in dynamic environments. By integrating D* and particle filters, we provide a system that adapts to uncertainties while maintaining efficiency. Future enhancements in obstacle prediction could make the approach even more robust and reliable.
+
+---
+
+## References
+1. To Understand D* Algorithm - https://www.cs.cmu.edu/~motionplanning/lecture/AppH-astar-dstar_howie.pdf
+2. To Understand Particle Filters -
+   - https://medium.com/@mathiasmantelli/particle-filter-part-1-introduction-fb6954bc12ec
+   - https://medium.com/@mathiasmantelli/particle-filter-part-2-intuitive-example-and-equations-0716223b862b
+3. To Understand what drone path planning means - https://arxiv.org/pdf/2006.04103 (After reading this research paper we chucked everything and just did the whole project from our own intuition.)
