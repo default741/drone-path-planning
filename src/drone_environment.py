@@ -47,7 +47,7 @@ class DroneEnvironment:
         self.roads_positions = list(map(lambda x: list(x), list(roads_positions)))
 
     def __get_houses_positions(self) -> None:
-        NUM_HOUSES = np.random.randint(low=8, high=15)
+        NUM_HOUSES = np.random.randint(low=5, high=8) if self.grid_size < 20 else np.random.randint(low=10, high=20)
         houses_positions = list()
 
         for _ in range(NUM_HOUSES):
@@ -64,7 +64,7 @@ class DroneEnvironment:
         self.houses_positions = list(map(lambda x: list(x), list(houses_positions)))
 
     def __get_tree_positions(self):
-        NUM_TREES = np.random.randint(low=10, high=15)
+        NUM_TREES = np.random.randint(low=5, high=8) if self.grid_size < 20 else np.random.randint(low=10, high=15)
         trees_position = list()
 
         while len(trees_position) <= NUM_TREES:
@@ -76,7 +76,7 @@ class DroneEnvironment:
         self.trees_position = trees_position
 
     def __get_dynamic_obstacles(self) -> None:
-        NUM_BIRDS = np.random.randint(low=5, high=10)
+        NUM_BIRDS = np.random.randint(low=2, high=5) if self.grid_size < 20 else np.random.randint(low=5, high=10)
         dynamic_obstacles = list()
 
         while len(dynamic_obstacles) <= NUM_BIRDS:

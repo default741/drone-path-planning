@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+import numpy as np
 
 from src.drone_agent import DroneAgent
 from src.drone_environment import DroneEnvironment
@@ -10,21 +11,19 @@ class DynamicAStar:
     def __init__(
         self, drone_agent: DroneAgent, environment: DroneEnvironment, particle_filter: ParticleFilter,
         heuristic_function: object) -> None:
-
         self.drone_agent = drone_agent
         self.environment = environment
         self.pfilter = particle_filter
         self.heuristic_function = heuristic_function
 
     def reconstruct_path(self, position_history, current_position):
-        final_drone_path = list()
+        final_drone_path = []
 
         while current_position in position_history:
             final_drone_path.append(current_position)
             current_position = position_history[current_position]
 
         final_drone_path.append(current_position)
-
         return final_drone_path[::-1]
 
     def compute_drone_path(self) -> list:
@@ -38,6 +37,8 @@ class DynamicAStar:
         path_cost_score = {drone_initial_position: 0}
         total_cost_score = {drone_initial_position: self.heuristic_function(drone_initial_position, goal_position)}
 
+        current_position = drone_initial_position
+
         while not frontier_queue.empty():
             _, current_position = frontier_queue.get()
 
@@ -45,7 +46,18 @@ class DynamicAStar:
                 return self.reconstruct_path(position_history=position_history, current_position=current_position)
 
             for neighbor in self.drone_agent.get_next_positions(current_position):
-                if self.pfilter.detect_obstacle(neighbor, self.environment):
+                movement = np.array(neighbor) - np.array(current_position)
+
+                self.pfilter.update_particles(current_position=np.array(current_position),
+                                              movement=movement,
+                                              updated_environment=self.environment)
+
+                if list(neighbor) in (self.environment.houses_positions + self.environment.trees_position):
+                    # print(f"Neighbor {neighbor} is blocked by a house or tree.")
+                    continue
+
+                if self.pfilter.detect_obstacle(current_position=np.array(neighbor), updated_environment=self.environment):
+                    # print(f"Neighbor {neighbor} detected as an obstacle by ParticleFilter.")  # Debugging info
                     continue
 
                 self.environment.update_particles_history(self.pfilter.particles)

@@ -61,7 +61,7 @@ Our approach addresses the shortcomings of current methods in drone path plannin
 - The **D* algorithm** successfully recalculates paths when encountering dynamic obstacles.
 - The **particle filter** accurately predicts nearby obstacles in most cases.
 - After running the code 100 times:
-  - The optimal path was found **52 times**, indicating a strong foundation but with room for improvement.
+  - The optimal path was found **59 times**, indicating a strong foundation but with room for improvement.
 
 ---
 

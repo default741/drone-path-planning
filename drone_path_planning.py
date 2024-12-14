@@ -8,11 +8,10 @@ from src.utils import Utils
 
 from tqdm import tqdm
 
-np.random.seed(42)
 
 def main(visualize: bool = True, drone_initial_position: tuple = None, goal_position: tuple = None, grid_size: int = None) -> bool:
     grid_size = grid_size if grid_size is not None else np.random.randint(low=10, high=30)
-    sensing_range = np.random.randint(low=2, high=5)
+    sensing_range = np.random.randint(low=2, high=9)
 
     if drone_initial_position is not None and goal_position is not None:
         drone_object = DroneAgent(grid_size=grid_size,sensing_range=sensing_range)
@@ -58,10 +57,10 @@ def run_simulations() -> None:
 if __name__ == "__main__":
     NUM_SIMULATIONS = 100
 
-    drone_initial_position = (1, 5)
-    goal_position = (28, 27)
-    grid_size = 30
+    drone_initial_position = None
+    goal_position = None
+    grid_size = None
 
-    # main(drone_initial_position=drone_initial_position, goal_position=goal_position, grid_size=grid_size)
+    main(drone_initial_position=drone_initial_position, goal_position=goal_position, grid_size=grid_size)
 
     # run_simulations()
