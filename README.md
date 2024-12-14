@@ -50,7 +50,7 @@ Our approach addresses the shortcomings of current methods in drone path plannin
 
 ## Accomplishments
 
-1. **D* Algorithm Implementation**: Enables real-time path recalculations.
+1. **D\* Algorithm Implementation**: Enables real-time path recalculations.
 2. **Particle Filter Integration**: Predicts nearby dynamic obstacles effectively.
 3. **Visualization Tool**: Provides a GUI to visualize drone navigation in real time.
 
